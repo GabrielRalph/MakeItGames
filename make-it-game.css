@@ -1,0 +1,209 @@
+[shadow] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   
+    --pizza-slot-ring: rgba(255, 97, 166, 0.72);
+    --pizza-slot-fill: rgba(143, 83, 201, 0.16);
+    font-size: 1.5vmin;
+
+   
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+    padding: 1em;
+    padding-left: 15vw;
+}
+
+.reset-button {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    z-index: 1;
+    width: 22vw;
+    height: 20vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(143, 83, 201, 0.8);
+    cursor: pointer;
+    box-shadow:
+        inset 0 0 0 1px rgba(143, 83, 201, 0.15),
+        0 1px 6px rgba(143, 83, 201, 0.12),
+        0 1px 3px rgba(0, 0, 0, 0.12);
+    transition:
+        box-shadow 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.1s ease;
+    border-radius: 6em;
+}
+.reset-button > div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 2.5em;
+
+}
+.reset-button img {
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    right: 0;
+    width: 15vw;
+    transform: translate(20%, -66%);
+    transition: transform 0.1s ease;
+    pointer-events: none;
+}
+
+.reset-button:hover,
+.reset-button[hover] {
+    box-shadow:
+        inset 0 0 0 2px rgba(143, 83, 201, 0.35),
+        0 0 0 2px rgba(255, 255, 255, 0.5),
+        0 0 0 5px rgba(143, 83, 201, 0.45),
+        0 0 20px rgba(255, 97, 166, 0.45),
+        0 2px 8px rgba(0, 0, 0, 0.12);
+    background-color: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+}
+.reset-button:hover img,
+.reset-button[hover] img {
+    transform: translate(20%, -66%) rotate(10deg);
+}
+
+
+main {
+    display: grid;
+    grid-template-columns: 9fr 2fr;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+    gap: 1em;
+    height: 100%;
+    width: 100%;
+}
+
+.scene-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.scene-image-wrapper {
+    position: relative;
+}
+
+
+.scene-image-wrapper > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.ingredients > div,
+.ingredients {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ingredients{
+    justify-content: center;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.ingredients > div {
+    padding: 2em 1em;
+    border: 5px solid;
+    border-radius: 10em;
+    overflow: hidden;
+    min-height: 0;
+    background: white;
+}
+
+
+.ingredient-button {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+}
+.ingredient-button:hover {
+    filter:
+    drop-shadow(0 0 8px rgba(161, 92, 226, 0.84));
+}
+.ingredient-button.selected {
+  filter:
+    drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.75))
+    drop-shadow(0 0 4px rgba(143, 83, 201, 0.95))
+    drop-shadow(0 0 10px rgba(255, 97, 166, 0.65))
+    drop-shadow(0 0 16px rgba(143, 83, 201, 0.4));
+}
+
+access-button {
+    user-select: none;
+    cursor: pointer;
+}
+
+.ingredient-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.slot-button {
+  width: 26%;
+  height: 26%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  border: 4px dashed var(--pizza-slot-ring);
+  border-radius: 50%;
+  background: var(--pizza-slot-fill);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 0 1px rgba(143, 83, 201, 0.15),
+    0 1px 6px rgba(143, 83, 201, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.12);
+  transition:
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  position: absolute;
+}
+
+.slot-button.drag-over,
+.slot-button:hover, 
+.slot-button[hover] {
+  --pizza-slot-ring: rgba(255, 97, 166, 0.72);
+  --pizza-slot-fill: rgba(143, 83, 201, 0.16);
+  box-shadow:
+    inset 0 0 0 2px rgba(143, 83, 201, 0.35),
+    0 0 0 2px rgba(255, 255, 255, 0.5),
+    0 0 0 5px rgba(143, 83, 201, 0.45),
+    0 0 20px rgba(255, 97, 166, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.slot-button:focus-visible {
+  outline: 2px solid rgba(255, 97, 166, 0.95);
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+.placed-ingredient {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+
