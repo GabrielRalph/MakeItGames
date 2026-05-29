@@ -52,3 +52,13 @@ if (window.SquidlyAPI) {
         else SquidlyAPI.firebaseSet("location", location);
     });
 }
+
+setTimeout(() => {
+    console.log("Video can play, starting animation");
+    const chefLoader = document.querySelector("chef-walker");
+    chefLoader.stop();
+    chefLoader.remove();
+}, 2000);
+// const video = document.querySelector("video");
+// video.addEventListener( "loadeddata" , () => {
+// });

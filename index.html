@@ -4,10 +4,30 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Make a Pizza</title>
+    <style>
+      chef-walker {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100000;
+        background: white;
+      }
+      chef-walker svg {
+        height: 50vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+    <script>const t='<defs><style>svg{stroke: black;stroke-linecap: round;stroke-linejoin: round;stroke-width: 90;}<style/><g id="def-arm"><g transform="translate(-1497, -535)"><circle cx="695" cy="1480" r="331" fill="#ffccae"/><path d="M929,688c-155-5-196,126-196,126l-52,141s-574,37-574-26-18-321,133-520C387,216,600,68,939,59c349-9,651,159,761,254,60,54,98,134,98,222,0,165-134,299-299,299-250,0-318-138-570-146Z" fill="#fff"/><path d="M805,809s10,189,74,282l-630,357s-216-242-181-640h737Z" fill="#fff"/></g></g><g id="def-torso"><g transform="translate(-1487, -4487)"><path d="M2494,4486c0-543-451-984-1008-984-556,0-1008,440-1008,984v531l2023,1-6-532Z" fill="#fff"/><polyline points="1394 5018 1394 4079 1957 3616" fill="none"/><circle cx="1625" cy="4794" r="70" fill="none"/><circle cx="1625" cy="4344" r="70" fill="none"/><circle cx="2363" cy="2850" r="291" fill="#ffccae"/><path d="M2503,2520c-6-12-101-190-140-218-41-28-115,8-150,23-34,14-78,9-140,20-62,11-89,29-307,36-141,4-282-23-364-42h-0s-8,1-8,1l-81,17c-0,50-6,123-24,170-23,62-45,104-48,136-3,31-29,54-30,106-1,51-88,145-88,145l-37-17c-36-121-142-215-276-229-58-6-115,3-166,26-0,0-0,0-0,0-101,45-177,142-190,261-19,178,110,338,288,357,44,4,88,0,128-12,36,73,196,304,763,365,539,57,829-206,871-491,33-222,14-532,4-656Z" fill="#ffccae"/><path d="M2266,1596l-394,82-1289,270c-0,0-0,0-0,0l-131-698s-329-17-377-326c-47-309,116-473,297-527,169-50,285,8,285,8,0,0,54-277,357-333,268-49,449,177,449,177,0,0,150-248,473-146,233,73,328,276,294,474-34,197-118,269-118,269l153,750Z" fill="#fff"/><path d="M911,1107l118,554m232-738l118,554m255-473l109,512" fill="none"/><path d="M2518,2073c-22,24-52,42-87,49l-1032,216h-0s-8,1-8,1l-81,17-610,128c-42,9-84,0-119-20-0-0-2-1-2-1-35-22-62-59-71-103l-45-217c-18-86,36-171,121-192,0,0,0-0,0-0l1289-270,394-82,52-10c88-18,175,38,194,126l45,217c11,53-5,106-39,144Z" fill="#fff"/><path d="M1285,2529c-23,62-45,104-48,136-3,31-29,54-30,106-1,51-88,145-88,145l-37-17c-36-121-142-215-276-229-58-6-115,3-166,26-0,0-0,0-0,0-37-68-52-167-57-233,0,0,2,1,2,1,34,21,76,29,119,20l610-128c-0,50-6,123-24,170Z" fill="#974c37"/><path d="M634,2925c27,3,91,8,154,17,62,8,123,21,144,37M736,3103s57-111,52-160" fill="none"/><path d="M2503,2521s0-0-0-0c-6-12-101-190-140-218-41-28-115,8-150,23-34,14-78,9-140,20-62,11-89,29-307,36-141,4-282-23-364-42l1032-216c34-7,64-25,87-49,19,29,54,91,49,153-6,86-65,294-65,294Z" fill="#974c37"/><path d="M2422,2842c-6,63-64,110-127,103-63-6-110-64-103-127,6-63,64-110,127-103s110,64,103,127ZM1830,2859c-6,63-64,110-127,103-63-6-110-64-103-127,6-63,64-110,127-103,63,6,110,64,103,127Z" stroke="none"/><path d="M2036,3330c-139,8-153-65-153-69,90-30,110-114,158-109,54,5,92,29,141,51,0,0-3,118-146,126Z" fill="#dd5252"/><circle cx="1506" cy="3303" r="205" fill="#f5b09d"stroke="none"/><path d="M2487,2988s-31,265-170,250c-57-6-99-20-134-36-49-21-86-45-141-51-48-5-67,78-158,109-27,9-62,13-106,9-256-27-260-251-260-251,0,0,45,38,182,52,137,14,199-90,248-101,48-11,95,15,95,15,0,0,28-32,66-28,38,4,149,86,221,94,71,7,157-62,157-62Z" stroke="none"/><path d="M1781,4227s-89-100-91-180c-1-80,50-222,50-222,0,0,85,82,107,158,22,76-66,244-66,244ZM1399,3634c-120-54-361-152-453-130s-97,45-88,90c8,45,190,144,291,189s619,179,625,63c2-49-253-158-374-213ZM1872,3742s139-120,208-70c69,50,44,133-49,166-93,32-175,13-175,13l-32-78,48-31Z" fill="#dd5252"/><path d="M1793,3840s8,111,64,181c56,70,157,140,157,140,0,0,64-90,15-190-49-100-163-165-163-165l-74,34Z" fill="#dd5252"/><path d="M1791,3718c-54,0-95,46-95,46,0,0,25,41,10,91-14,50,38,44,72,43s95-7,100-77c5-69-47-104-88-104Z" fill="#dd5252"/></g></g><g id = "def-foot"><g transform="translate(-398, -91)"><path d="M733,69H136c-41,0-74,33-74,74v447h1214v-244c0-92-61-223-231-223s-293,66-293,66l-18-120Z" fill="#3f3f3f"/></g></g></defs>',e=[[[491.1,-41.34,-562.31,-466,-162,80.175],[458,355,-499.58,-485,47,-151.21],[445,505,-346.95,-499,-420,-381.46],[424,746,-141.66,-501,-545,-585.36],[387,1144,198.83,-539,-643,-807.74],[362,1537,567.63,-493,-641,-1003.6],[382,1531,898.51,-462,-734,-1188.5],[478,1015,1127.1,-514,-966,-1369.4],[477,993,1277.3,-464,-1138,-1669.5],[463,923,1311.4,-451,-1166,-1832.4],[434,939,1108.3,-458,-883,-1734.7],[432,653,872.98,-486,-772,-1607.2],[422,531,638.74,-481,-514,-1384],[420,438,437.62,-410,-49,-1042.6],[439,659,244.38,-484,416,-651.81],[442,442,48.169,-516,442,-332.94],[466,161,-118.9,-468,-35,-81.732],[474,120,-333.12,-460,-225,-14.252],[464,105,-516.05,-468,-246,77.449]],[[-3086,-1704,-577.45,-2941,-1703,-577.45],[-2855,-1621,-904.33,-2817,-1660,-577.41],[-3088,-1850,-1193.8,-3060,-1743,-566.87],[-3269,-2019,-1372.9,-3300,-1979,-566.99],[-3241,-2111,-1529.9,-3136,-1935,-566.98],[-2956,-2139,-1482.9,-3099,-1685,-573.23],[-2931,-2196,-1233.1,-3099,-1663,-580.66],[-3216,-2079,-964.92,-3113,-1646,-580.13],[-3299,-1636,-647.14,-3250,-1633,-579.91],[-2964,-1621,-579.91,-2962,-1640,-599.36],[-2897,-1724,-579.98,-2844,-1612,-916.7],[-3161,-1823,-579.86,-3161,-1941,-1237.5],[-3383,-2046,-579.96,-3405,-2112,-1448.1],[-3071,-1966,-579.76,-2994,-2032,-1512.3],[-2916,-1550,-581.9,-2884,-1931,-1398.8],[-2926,-1619,-581.78,-2953,-2061,-1183.6],[-3261,-1722,-581.76,-3192,-2023,-1129.7],[-3352,-2022,-581.44,-3161,-2029,-678.75],[-3057,-2001,-581.9,-3057,-2031,-562.81]]],l=e[0].length,{cos:s,sin:n,PI:f}=Math;let i=t=>-.55854-1.64*s(1.9*f*t)-4.24*s(3.8*f*t)+.539*s(5.7*f*t)+.18*n(1.9*f*t)+1.35*n(3.8*f*t)-.508*n(5.7*f*t),o=t=>-53.3*s(2*f*t)+4.56*n(2*f*t)-.329*s(4*f*t)-.384*n(4*f*t)+6.31*s(6*f*t)-1.26*n(6*f*t),r=t=>-3806.8872-532*s(1.53*f*t)-32.9*s(3.06*f*t)+332*s(4.6*f*t)+372*s(6.13*f*t)+336*s(7.66*f*t)+532*n(1.53*f*t)+650*n(3.06*f*t)+391*n(4.6*f*t)+103*n(6.13*f*t)-219*n(7.66*f*t);const c=[0,30.98,56.99,64.03,64.03,38.42,8.864,-12.16,-15.96,0,0,0,0,0,0,0,0,0,0],a=[0,0,0,0,0,0,0,0,0,3.182,33.98,58.48,68.86,59.72,35.63,4.635,0,-19,-4.943];let d=5,g=-55,h=60,p=2250,m=4650;const M=360,u=-500;class b extends HTMLElement{constructor(){super()}t(t){let s=t=>document.getElementById(t);const n=s("gao2"),f=s("ga2"),r=s("gb"),u=s("ga1"),b=s("l1-bg"),k=s("l1-fg"),Z=s("l2-bg"),$=s("l2-fg"),w=o(.5-t)+g,y=o(t)+g,A=-i(t),v=80*o(t)/h,x=250*i(3*-t)/d,j=`translate(${p}, ${m+x}) rotate(${A})`;n.setAttribute("transform",j),f.setAttribute("transform",`translate(${M+v}, -500) rotate(${y})`),r.setAttribute("transform",j),u.setAttribute("transform",`translate(${-360-v}, -500) rotate(${w})`);const E=t*l%l,H=Math.floor(E)%l,B=(H+1)%l,C=E-Math.floor(E);let I=e.map((t,e)=>t[H].map((l,s)=>l*(1-C)+t[B][s]*C+(e?8e3:2250)));I=I[0].map((t,e)=>[t,I[1][e]]);const L=I.slice(0,3).flat().join(" "),T=I.slice(3).flat().join(" ");b.setAttribute("points",L),k.setAttribute("points",L),Z.setAttribute("points",T),$.setAttribute("points",T);const q=c[H]*(1-C)+c[B]*C,F=a[H]*(1-C)+a[B]*C;s("f1").setAttribute("transform",`translate(${I[2][0]}, ${I[2][1]}) rotate(${q})`),s("f2").setAttribute("transform",`translate(${I[5][0]}, ${I[5][1]}) rotate(${F})`)}connectedCallback(){this.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -200 4500 8200">${t}\n        <g id="gao2"><g id="ga2"><use href="#def-arm"/></g></g>\n        <polyline id="l1-bg" fill="none" stroke="black" stroke-width="900"/>\n        <polyline id="l1-fg" fill="none" stroke="white" stroke-width="730"/>\n        <g id="f1">\n          <use href="#def-foot"/>\n        </g>\n        <polyline id="l2-bg" fill="none" stroke="black" stroke-width="900"/>\n        <polyline id="l2-fg" fill="none" stroke="white" stroke-width="730"/>\n        <g id="gb">\n          <use href="#def-torso"/>\n          <g id="ga1">\n            <use href="#def-arm"/>\n          </g>\n        </g>\n\n        \n         <g id="f2">\n          <use href="#def-foot"/>\n        </g>\n        </svg>`,this.animate()}animate(){let t=!1,e=l=>{t||(this.t(l/2e3),requestAnimationFrame(e))};this.stop=()=>t=!0,e(0)}}customElements.define("chef-walker",b);</script>
   </head>
   <body>
+    <chef-walker></chef-walker>
     <div class = "section home">
-      <video autoplay loop muted playsinline id="background-video">
+      <video autoplay muted playsinline id="background-video">
         <source src="./resources/background.mp4" type="video/mp4">
       </video>
       <div class = "btn-row">
@@ -19,73 +39,70 @@
       </access-button>
       <make-it-game></make-it-game>
     </div>
-    
+  
     <script type="module"src = "./index.js" ></script>
-
     </script>
     <style>
+      body[location = "home"] .section.game {
+        display: none;
+      }
 
-    body[location = "home"] .section.game {
-      display: none;
-    }
+      body:not([location = "home"]) .section.home {
+        display: none;
+      }
 
-    body:not([location = "home"]) .section.home {
-      display: none;
-    }
+      .home-button {
+        filter: drop-shadow(2px 4px 15px #100);
+      }
 
-    .home-button {
-      filter: drop-shadow(2px 4px 15px #100);
-    }
+      .btn-row access-button img {
+        width: 20vw;
+        cursor: pointer;
+        transition: 0.3s ease transform, 0.3s ease filter;
+      }
 
-    .btn-row access-button img {
-      width: 20vw;
-      cursor: pointer;
-      transition: 0.3s ease transform, 0.3s ease filter;
-    }
+      .btn-row access-button:hover img,
+      .btn-row access-button[hover] img {
+        transform: scale(1.1);
+        filter: drop-shadow(2px 4px 15px #100);
+      }
 
-    .btn-row access-button:hover img,
-    .btn-row access-button[hover] img {
-      transform: scale(1.1);
-      filter: drop-shadow(2px 4px 15px #100);
-    }
+      .btn-row {
+        display: flex;
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        gap: 3vw;
+      }
 
-    .btn-row {
-      display: flex;
-      position: absolute;
-      top: 65%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      gap: 3vw;
-    }
-
-    video {
-      object-fit: cover;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      height: 100%;
-      width: 100%;
-      transform: translate(-50%, -50%);
-    }
-    .home-button {
-      position: absolute;
-      top: 26vh;
-      left: 1em;
-      z-index: 1000;
-      padding: 1em 1em 1em 0;
-      transition: transform 0.2s ease;
-    }
-    .home-button:hover,
-    .home-button[hover] {
-      transform: scale(1.1);
-    }
-    .home-button img {
-      width: 15vw;
-    }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
-   
+      video {
+        object-fit: cover;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 100%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+      }
+      .home-button {
+        position: absolute;
+        top: 26vh;
+        left: 1em;
+        z-index: 1000;
+        padding: 1em 1em 1em 0;
+        transition: transform 0.2s ease;
+      }
+      .home-button:hover,
+      .home-button[hover] {
+        transform: scale(1.1);
+      }
+      .home-button img {
+        width: 15vw;
+      }
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
     </style>
   </body>
 </html>
