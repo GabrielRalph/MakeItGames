@@ -5,20 +5,27 @@ let location = "home";
 document.body.setAttribute("location", location);
 let onupdate = () => {};
 
-const makeItGame = document.querySelector("make-it-game");
-makeItGame.addEventListener("change", () => {
-    onupdate("game", JSON.stringify(makeItGame.state));
+const pizzaGame = document.querySelector("make-it-game[pizza]");
+pizzaGame.scene = GAMES.pizza;
+const fishGame = document.querySelector("make-it-game[fish]");
+fishGame.scene = GAMES.fish;
+
+pizzaGame.addEventListener("change", () => {
+    onupdate("pizza", JSON.stringify(pizzaGame.state));
+});
+fishGame.addEventListener("change", () => {
+    onupdate("fish", JSON.stringify(fishGame.state));
 });
 
 async function setLocation(newLocation) {
     if (location !== newLocation) {
         location = newLocation;
         document.body.setAttribute("location", location);
-        if (location === "home") {
-            makeItGame.reset();
-        } else {
-            makeItGame.scene = GAMES[location];
-        }
+        // if (location === "home") {
+        //     makeItGame.reset();
+        // } else {
+        //     makeItGame.scene = GAMES[location];
+        // }
         onupdate("location", location);
         await new Promise(resolve => setTimeout(resolve, 100));
     }
@@ -39,12 +46,20 @@ homeButton.addEventListener("access-click", e => e.waitFor(setLocation("home")))
 if (window.SquidlyAPI) {
     onupdate = SquidlyAPI.firebaseSet;
 
-    SquidlyAPI.firebaseOnValue("game", (str) => {
+    SquidlyAPI.firebaseOnValue("pizza", (str) => {
         let value = {slots: []}
         try {
-        value = JSON.parse(str);
+            value = JSON.parse(str);
         } catch (e) {}
-        makeItGame.state = value;
+        pizzaGame.state = value;
+    });
+
+    SquidlyAPI.firebaseOnValue("fish", (str) => {
+        let value = {slots: []}
+        try {
+            value = JSON.parse(str);
+        } catch (e) {}
+        fishGame.state = value;
     });
 
     SquidlyAPI.firebaseOnValue("location", (loc) => {

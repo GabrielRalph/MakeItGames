@@ -59,10 +59,10 @@ export const PIZZA_GAME = {
     imgURL: "resources/pizza/pizza.png",
     soundEffect: "resources/pizza/place.mp3",
     ingredients: [
-        {name: "pepper", src: "resources/pizza/pepper.svg"},
-        {name: "tomato", src: "resources/pizza/tomato.svg"},
-        {name: "mushroom", src: "resources/pizza/mushroom.svg"},
-        {name: "pepperoni", src: "resources/pizza/pepperoni.svg"},
+        {name: "pepper", src: "resources/pizza/pepper.png"},
+        {name: "tomato", src: "resources/pizza/tomato.png"},
+        {name: "mushroom", src: "resources/pizza/mushroom.png"},
+        {name: "pepperoni", src: "resources/pizza/pepperoni.png"},
     ],
 }
 

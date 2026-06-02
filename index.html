@@ -37,7 +37,8 @@
       <access-button class="home-button">
         <img src = "./resources/home.svg" />
       </access-button>
-      <make-it-game></make-it-game>
+      <make-it-game pizza></make-it-game>
+      <make-it-game fish></make-it-game>
     </div>
   
     <script type="module"src = "./index.js" ></script>
@@ -48,6 +49,14 @@
       }
 
       body:not([location = "home"]) .section.home {
+        display: none;
+      }
+
+      body:not([location = "pizza"]) make-it-game[pizza] {
+        display: none;
+      }
+
+      body:not([location = "fish"]) make-it-game[fish] {
         display: none;
       }
 
