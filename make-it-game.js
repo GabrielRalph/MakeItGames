@@ -157,25 +157,29 @@ class MakeItGame extends ShadowElement {
     const startY = e.clientY;
     const DRAG_THRESHOLD = 8;
     let isDragging = false;
+    if (this._ghost) {
+      this._ghost.remove();
+    }
     let ghost = null;
 
     const enterDragMode = (x, y) => {
       isDragging = true;
-      ghost = document.createElement("img");
-      ghost.src = ingredient.svg ? "data:image/svg+xml;base64," + btoa(ingredient.svg) : ingredient.src;
-      Object.assign(ghost.style, {
-        position: "fixed",
-        pointerEvents: "none",
-        width: "80px",
-        height: "80px",
-        objectFit: "contain",
-        transform: "translate(-50%, -50%)",
-        zIndex: "9999",
-        left: `${x}px`,
-        top: `${y}px`,
-        opacity: "0.85",
+      ghost = this.createChild("img", {
+        src: ingredient.svg ? "data:image/svg+xml;base64," + btoa(ingredient.svg) : ingredient.src,
+        styles: {
+          position: "fixed",
+          pointerEvents: "none",
+          width: "10vmin",
+          height: "10vmin",
+          objectFit: "contain",
+          transform: "translate(-50%, -50%)",
+          zIndex: "9999",
+          left: `${x}px`,
+          top: `${y}px`,
+          opacity: "0.85",
+        }
       });
-      document.body.appendChild(ghost);
+      this._ghost = ghost;
     };
 
     target.setPointerCapture(pointerId);
@@ -204,6 +208,7 @@ class MakeItGame extends ShadowElement {
       target.removeEventListener("pointermove", onMove);
       target.removeEventListener("pointerup", onEnd);
       target.removeEventListener("pointercancel", onEnd);
+      console.log("end", ghost ? "had ghost" : "no ghost", "isDragging:", isDragging);
       if (ghost) ghost.remove();
       if (isDragging) this._suppressVariantCycle = true;
       for (const [, slotEl] of this.slotElements) {
