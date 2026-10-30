@@ -358,3 +358,5 @@ new ShadowElement(el, name?)
 | `waitStyles()` | Returns a `Promise` that resolves once stylesheets have finished loading. |
 | `static loadStyleSheets(urls)` | Fetch an array of CSS URLs and return `CSSStyleSheet` objects. Results are cached by URL. |
 | `static usedStyleSheets` | Override to return an array of CSS URLs to load on construction. |
+
+

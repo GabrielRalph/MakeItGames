@@ -6,5 +6,5 @@
   "version": "1.0.0",
   "description": "Drag and place ingredients to make a pizza with Squidly mini app accessibility support.",
   "author": "SquidlyDev",
-  "icon": "./resources/icon.png"
+  "icon": "./resources/icon.svg"
 }

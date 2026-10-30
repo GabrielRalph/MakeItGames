@@ -1,5 +1,5 @@
 {
-    "liveServer.settings.port": 5502,
+    "liveServer.settings.port": 5503,
     "liveServer.settings.cors": true,
     "liveServer.settings.headers": {
         "Access-Control-Allow-Origin": "https://squidly.com.au"
